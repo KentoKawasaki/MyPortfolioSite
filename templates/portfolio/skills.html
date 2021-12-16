@@ -1,0 +1,68 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}Skills{% endblock title %}
+{% block activeSkills %}active{% endblock activeSkills %}
+{% block header %}
+  <div class="pd-element-underNav d-flex align-items-center">
+    <div class="container text-center">
+      <h1 class="display-4">My Programming Skills</h1>
+    </div>
+  </div>
+{% endblock header %}
+{% block main %}
+  <!-- skills -->
+  <section class="mb-100">
+    <div class="container">
+      <h2 class="display-4 fw-bold text-primary">SKILLS</h2>
+      <div class="row">
+        <div class="col-md-10 mx-auto py-4">
+          <table class="table table-borderless text-center">
+            {% for skill in skills %}
+            <tr>
+              <td class="align-middle h4 fw-bold text-dark">{{ skill.name }}</td>
+              <td class="align-middle">
+                <span class=" badge bg-primary font-14"
+                  >{{ skill.years_rounded }}年</span
+                >
+              </td>
+              <td class="align-middle">{{ skill.description.text }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- last works -->
+  <section class="mb-5">
+    <div class="container">
+      <h2 class="display-4 fw-bold text-primary pb-3">The Last WORKS</h2>
+      <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3">
+        {% for work in works %}
+        <div class="col mb-3">
+          <a href="{{ work.url }}" target="_blank" rel="noreferrer noopener">
+            <div class="card shadow-sm border boder-light">
+              <div>
+                <img
+                  src="{% if work.image %}{{ work.image.url }}{% else %}{% static 'assets/images/cat002.jpg' %}{% endif %}"
+                  class="w-100 img-center-cover"
+                  height="250"
+                  alt="card img"
+                />
+              </div>
+              <div class="p-3">
+                <h5 class="text-dark mb-0">{{ work.title }}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="text-end">
+        <a href="{% url 'portfolio:works' %}" class="btn btn-lg btn-primary"
+          >View All Works<i class="far fa-list-alt ps-2"></i
+        ></a>
+      </div>
+    </div>
+  </section>
+{% endblock main %}

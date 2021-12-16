@@ -1,0 +1,46 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+{% block title %}Works{% endblock title %}
+{% block activeWorks %}active{% endblock activeWorks %}
+{% block header %}
+  <div class="pd-element-underNav d-flex align-items-center">
+    <div class="container text-center">
+      <h1 class="display-4">My Works</h1>
+    </div>
+  </div>
+{% endblock header %}
+{% block main %}
+  <section>
+    <div class="back-left-top">
+      <a href="/"><i class="fas fa-arrow-left"></i>戻る</a>
+    </div>
+    <div class="container">
+      <!-- <div class="text-center py-5">
+        <h3 class="display-4 fw-bold text-primary">WORKS</h3>
+      </div> -->
+      <div class="container">
+        <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3">
+          {% for work in works %}
+            <div class="col mb-3">
+              <a href="{{ work.url }}" target="_blank" rel="noreferrer noopener">
+                <div class="card shadow-sm border boder-light">
+                  <div>
+                    <img
+                      src="{% if work.image %}{{ work.image.url }}{% else %}{% static 'assets/images/cat002.jpg' %}{% endif %}"
+                      class="w-100 img-center-cover"
+                      height="250"
+                      alt="card img"
+                    />
+                  </div>
+                  <div class="p-3">
+                    <h5 class="text-dark mb-0">{{ work.title }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock main %}

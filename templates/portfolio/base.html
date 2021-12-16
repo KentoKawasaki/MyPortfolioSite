@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio&nbsp;{% block title %}{% endblock title %}</title>
+
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- bootstrap5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- font awesome icon -->
+    <link href="{% static 'assets/css/all.css' %}" rel="stylesheet" />
+
+    <!-- My stylesheet -->
+    <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- header -->
+    <headr>
+      <!-- navbar -->
+      <nav
+        class="navbar navbar-expand-md navbar-light bg-light fixed-top"
+        aria-label="Portfolio navbar"
+      >
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Kento</span>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarsPortfolio"
+                aria-controls="navbarsPortfolio"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            <div
+              class="collapse navbar-collapse justify-content-md-center"
+              id="navbarsPortfolio"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="
+                      nav-link
+                      {% block activeHome %}{% endblock activeHome %}
+                    "
+                    href="/"
+                    >HOME</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="
+                      nav-link
+                      {% block activeSkills %}{% endblock activeSkills %}
+                    "
+                    href="{% url 'portfolio:skills' %}"
+                    >SKILLS</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="
+                      nav-link
+                      {% block activeWorks %}{% endblock activeWorks %}
+                    "
+                    href="{% url 'portfolio:works' %}"
+                    >WORKS</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar -->
+      <!-- other header -->
+      {% block header %}{% endblock header %}
+    </headr>
+    <!-- end header-->
+
+    <!-- main -->
+    <main>{% block main %}{% endblock main %}</main>
+    <!-- end main-->
+
+    <!-- footer -->
+    <footer class="bg-light text-center">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        &copy; 2021 Kento Kawasaki.
+      </div>
+      <!-- end Copyright -->
+    </footer>
+    <!-- end footer-->
+
+    <!-- bootstrap5 js plugin(bundle)-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
